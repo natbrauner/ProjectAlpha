@@ -26,7 +26,7 @@ public:
 	double sigma;
 	double alpha;
 	void start(); //astarts a new MAB giving it all new values bro
-	vector<double> reward();
+	vector<double> reward;
 	vector<double> V;
 	void pulltheleverkronk(); //this makes me slightly happier
 }; //TIP: put a fucking colon after a class...(+1hr later)
@@ -40,15 +40,25 @@ void MAB::start() {
 	alpha = .1;
 }
 
-vector<double> MAB::reward() {
+/*vector<double> MAB::reward() {
 	double u1 = NRAND;
 	double u2 = NRAND;
 	double z = sqrt(-2 * log(u1))*sin(2 * pi*u2);
-	double reward1.pushback((z * sigma) + mu;)
-}
+	
+}*/
 
 void MAB::pulltheleverkronk() {
-	V.
+	
+	double u1 = NRAND;
+	double u2 = NRAND;
+	int V_size = V.size();
+	int r_size = reward.size();
+	double z = sqrt(-2 * log(u1))*sin(2 * pi*u2);
+	reward.push_back((z * sigma) + mu);
+	V.push_back(alpha*reward[r_size-1] + V[V_size - 1] * (1 - alpha));
+	for (int i = 0; i < V_size; i++) {
+		cout << V[i] << endl;
+	}
 }
 
 //   vector <int> poop
