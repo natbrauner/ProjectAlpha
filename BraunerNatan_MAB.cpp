@@ -14,73 +14,64 @@
 
 #define NRAND (double) (rand() / RAND_MAX)
 #define pi (double) 3.1415926
-#define n 3
+#define n 5 //number of arms
 using namespace std;
 
-class MAB {
-	//normal distribution equation z=sqrt(-2*ln(u1))*sin(2*pi()*u2)
-	//sigma multipliesthe std dev by that amount
-	//mu shifts the std dev mean.
-public:
-	double mu;
-	double sigma;
-	double alpha;
-	void start(); //astarts a new MAB giving it all new values bro
-	vector<double> reward;
-	vector<double> V;
-	void pulltheleverkronk(); //this makes me slightly happier
-}; //TIP: put a fucking colon after a class...(+1hr later)
+	class MAB {
+		//normal distribution equation z=sqrt(-2*ln(u1))*sin(2*pi()*u2)
+		//sigma multipliesthe std dev by that amount
+		//mu shifts the std dev mean.
+	public:
+		double mu;
+		double sigma;
+		double alpha;
+		void start(); //astarts a new MAB giving it all new values bro
+		vector<double> reward;
+		vector<double> V;
+		void pulltheleverkronk(); //this makes me slightly happier
+	}; //TIP: put a fucking colon after a class...(+1hr later)
 
-//Britny helped me a lot on this section.
-void MAB::start() {
-	mu = (NRAND - .5) * 200;
-	sigma = NRAND * 5;
-	V.push_back(0); //Britny Mors said that initializing this value, V, to 0 means it wont do wierd things 
-				//when I run the code multiple times.
-	alpha = .1;
-}
-
-/*vector<double> MAB::reward() {
-	double u1 = NRAND;
-	double u2 = NRAND;
-	double z = sqrt(-2 * log(u1))*sin(2 * pi*u2);
-	
-}*/
-
-void MAB::pulltheleverkronk() {
-	
-	double u1 = NRAND;
-	double u2 = NRAND;
-	int V_size = V.size();
-	int r_size = reward.size();
-	double z = sqrt(-2 * log(u1))*sin(2 * pi*u2);
-	reward.push_back((z * sigma) + mu);
-	V.push_back(alpha*reward[r_size-1] + V[V_size - 1] * (1 - alpha));
-	for (int i = 0; i < V_size; i++) {
-		cout << V[i] << endl;
-	}
-}
-
-//   vector <int> poop
-// creat a n number of MABs
-/*MAB::MAB() {
-		sigma(NRAND);
-		mu((NRAND - .5) * 200);
+	//Britny helped me a lot on this section.
+	void MAB::start() {
+		mu = (NRAND - .5) * 200;
+		sigma = NRAND * 5;
+		V.push_back(0); //Britny Mors said that initializing this value, V, to 0 means it wont do wierd things 
+					//when I run the code multiple times.
+		alpha = .1;
 	}
 
-}*/
+	//this is supposed to pull a lever
+	void MAB::pulltheleverkronk() {
 
-//develop a reward system
-/*double MAB::reward() {
-	double z = sqrt(-2 * log(NRAND))*sin(2 * pi * NRAND);
-	for(int i=0;i<n;i++)
-	double reward1 = (z * sigma.push_back) + mu.push_back;
-}*/
+		double u1 = NRAND;
+		double u2 = NRAND;
+		int V_size = V.size();
+		int r_size = reward.size();
+		double z = sqrt(-2 * log(u1))*sin(2 * pi*u2);
+		reward.push_back((z * sigma) + mu);
+	if (V.size==0)
+
+		for (int i = 0; i < r_size; i++) {
+			cout << V[i] << endl;
+		}
+
+	}
+
+
+//this will maybe eventually learn something... like me
+//class learner() {
+
+//}
 
 
 //be able to start a reward and pulltheleverkronk
 int main()
 {
+	//for (int j = 0; j < n; j++) {
+	
+
+	//}
+
+
 	return 0;
 }
-
